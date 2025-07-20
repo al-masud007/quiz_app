@@ -8,7 +8,7 @@ class AnswerButton extends StatelessWidget {
   final void Function() ontap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
@@ -19,7 +19,10 @@ class AnswerButton extends StatelessWidget {
         ),
       ),
       onPressed: ontap,
-      child: Text(answertext),
+      child: Text(
+        answertext,
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }
