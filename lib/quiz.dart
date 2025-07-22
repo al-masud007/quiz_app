@@ -41,7 +41,7 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswer.length == questions.length) {
       setState(() {
         // selectedAnswer = [];
-        print('final answer:$selectedAnswer');
+        // print('final answer:$selectedAnswer');
         activeScreen = 'result-screen';
 
         // activeScreen = 'ResultScreen';
@@ -59,7 +59,9 @@ class _QuizState extends State<Quiz> {
       );
     }
     if (activeScreen == 'result-screen') {
-      screenWidget = const ResultScreen();
+      screenWidget = ResultScreen(
+        choosenAnswer: selectedAnswer,
+      );
     }
     return MaterialApp(
       home: Scaffold(
