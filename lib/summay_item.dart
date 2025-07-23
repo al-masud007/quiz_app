@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_app/question_identifier.dart';
 
 class SummayItem extends StatelessWidget {
-  const SummayItem(this.Itemdata, {super.key});
-  final Map<String, Object> Itemdata;
+  const SummayItem(this.itemdata, {super.key});
+  final Map<String, Object> itemdata;
 
   @override
   Widget build(BuildContext context) {
+    final isCorrectAnswer =
+        itemdata['user_answer'] == itemdata['correct_answer'];
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            ((Itemdata['question_index'] as int) + 1,).toString(),
-          ),
+          QuestionIdentifier(
+              isCorrectAnswer: isCorrectAnswer,
+              questionIndex: itemdata['question_index'] as int),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Itemdata['questions'] as String,
+                  itemdata['questions'] as String,
                   style: GoogleFonts.lato(
                     color: Colors.white,
                     fontSize: 16,
@@ -30,12 +33,12 @@ class SummayItem extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                Text(Itemdata['user_answer'] as String,
+                Text(itemdata['user_answer'] as String,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 202, 171, 252),
                     )),
                 Text(
-                  Itemdata['correct_answer'] as String,
+                  itemdata['correct_answer'] as String,
                   style: const TextStyle(
                     color: Color.fromARGB(255, 181, 254, 246),
                   ),
